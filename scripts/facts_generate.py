@@ -161,7 +161,7 @@ def generate_all_facts():
 
 # Generator execution:    
 
-filename = 'test.pl'
+filename = '205006_26.pl'
 test = generate_all_facts()
 
 with open(filename, 'w') as outfile:
