@@ -1,13 +1,18 @@
-Biały król znajduje się na polu F4.
-Biały król może bić pierwszą wieżę.
-Biały król może bić drugiego gońca.
-Biały król może bić drugiego pionka.
+1. Biały król znajduje się na polu F4.
+2. Biały król może bić pierwszą wieżę.
+28. Biały król może bić drugiego gońca.
+10. Biały król może bić drugiego pionka.
 
 4. Czarny król może bić pierwszego gońca.
 27. Czarny król może bić pierwszą wieżę.
 
+23. Pierwszy czarny goniec może bić hetmana.
+16. Czarny goniec znajduje się przy krawędzi szachownicy.
+
 21. Drugi czarny goniec może bić drugiego gońca.
 22. Drugi czarny goniec może bić trzeci pionek.
+13. Drugi czarny goniec może bić króla.
+18. Drugi czarny goniec może bić pierwszego gońca.
 
 3. Pierwszy czarny skoczek może bić drugiego pionka.
 7. Pierwszy czarny skoczek może bić króla.
@@ -20,17 +25,10 @@ Biały król może bić drugiego pionka.
 5. Pierwszy czarny pionek może bić pierwszego gońca.
 19. Pierwszy czarny pionek może bić trzeciego pionka.
 
-
 6. Pierwszy biały pionek może bić pierwszego skoczka.
 17. Pierwszy biały pionek może bić pierwszą wieżę.
 
 26. Trzeci biały pionek może bić pierwszego pionka.
-
-13. Drugi czarny goniec może bić króla.
-18. Drugi czarny goniec może bić pierwszego gońca.
-
-23. Pierwszy czarny goniec może bić hetmana.
-16. Czarny goniec znajduje się przy krawędzi szachownicy.
 
 8. Pierwsza biała wieża może bić pierwszego skoczka.
 
