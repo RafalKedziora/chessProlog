@@ -2077,3 +2077,35 @@ _, _, _, _, _, _, _, _,
 _, _, _, _, _, _, _, _)).
 
 queen_attacks(A, B, S) :- bishop_attacks(A, B, S) ; rook_attacks(A, B, S).
+
+clues(S) :- 
+  f4(piece(king, one, white), S),
+  king_attacks(piece(king, one, white), piece(rook, one, black), S),
+  knight_attacks(piece(knight, one, black), piece(pawn, two, white), S),
+  king_attacks(piece(king, one, black), piece(bishop, one, white), S),
+  black_pawn_attacks(piece(pawn, one, black), piece(bishop, one, white), S),
+  white_pawn_attacks(piece(pawn, one, white), piece(knight, one, black), S),
+  knight_attacks(piece(knight, one, black), piece(king, one, white), S),
+  rook_attacks(piece(rook, one, white), piece(knight, one, black), S),
+  bishop_attacks(piece(bishop, one, white), piece(pawn, one, black), S),
+  king_attacks(piece(king, one, white), piece(pawn, two, black), S),
+  knight_attacks(piece(knight, one, black), piece(pawn, three, white), S),
+  knight_attacks(piece(knight, one, black), piece(bishop, two, white), S),
+  bishop_attacks(piece(bishop, two, black), piece(king, one, white), S),
+  rook_attacks(piece(rook, one, black), piece(pawn, three, white), S),
+  rook_attacks(piece(rook, one, black), piece(king, one, white), S),
+  edge(piece(bishop, _, black)),
+  white_pawn_attacks(piece(pawn, one, white), piece(rook, one, black), S),
+  bishop_attacks(piece(bishop, two, black), piece(bishop, one, white), S),
+  black_pawn_attacks(piece(pawn, one, black), piece(pawn, three, white), S),
+  rook_attacks(piece(bishop, two, white), piece(king, one, black), S),
+  bishop_attacks(piece(bishop, two, black), piece(bishop, two, white), S), % mirror 1
+  bishop_attacks(piece(bishop, two, black), piece(pawn, three, white), S),
+  bishop_attacks(piece(bishop, one, black), piece(queen, one, white), S),
+  black_pawn_attacks(piece(pawn, two, black), piece(king, one, white), S),
+  bishop_attacks(piece(bishop, two, white), piece(bishop, two, black), S), % mirror 1
+  white_pawn_attacks(piece(pawn, three, white), piece(pawn, one, black), S),
+  king_attacks(piece(king, one, black), piece(rook, one, white), S),
+  king_attacks(piece(king, one, white), piece(bishop, two, black), S)
+
+
