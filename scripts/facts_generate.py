@@ -42,12 +42,12 @@ def get_black_pawn_attacks(pos):
     return attacks
   
   if x != board_width:
-    attacks.append(convert_numeric_to_coord((x + 1, y - 1)))
+    attacks.append((x + 1, y - 1))
 
   if x != 1:
-    attacks.append(convert_numeric_to_coord((x - 1, y - 1)))
+    attacks.append((x - 1, y - 1))
 
-  return attacks
+  return list(map(convert_numeric_to_coord, attacks))
 
 def get_white_pawn_attacks(pos):
   x, y = convert_coord_to_numeric(pos)
@@ -57,12 +57,12 @@ def get_white_pawn_attacks(pos):
     return attacks
   
   if x != board_width:
-    attacks.append(convert_numeric_to_coord((x + 1, y + 1)))
+    attacks.append((x + 1, y + 1))
 
   if x != 1:
-    attacks.append(convert_numeric_to_coord((x - 1, y + 1)))
+    attacks.append((x - 1, y + 1))
 
-  return attacks
+  return list(map(convert_numeric_to_coord, attacks))
 
 def get_knight_attacks(pos):
   x, y = convert_coord_to_numeric(pos)
@@ -73,6 +73,74 @@ def get_knight_attacks(pos):
     if (px > 0 and px < board_width) and (py > 0 and py < board_height):
       result.append((px, py))
 
-  return result
+  return list(map(convert_numeric_to_coord, result))
 
-# TODO: rook, bishop, queen
+def get_rook_attacks(pos):
+  x, y = convert_coord_to_numeric(pos)
+  results = []
+
+  for ry in range(1, board_height + 1):
+    for rx in range(1, board_width + 1):
+      if (rx == x) != (ry == y):
+        results.append((rx, ry))
+
+  return list(map(convert_numeric_to_coord, results))
+
+def get_bishop_attacks(pos):
+  x, y = convert_coord_to_numeric(pos)
+  results = []
+
+  for ry in range(1, board_height + 1):
+    for rx in range(1, board_width + 1):
+      if abs(rx - x) == abs(ry - y) and (rx != x and ry != y) :
+        results.append((rx, ry))
+
+  return list(map(convert_numeric_to_coord, results))
+
+def get_king_attacks(pos):
+  x, y = convert_coord_to_numeric(pos)
+  results = []
+
+  for ry in range(max(y - 1, 1), min(y + 2, board_height)):
+    for rx in range(max(x - 1, 1), min(x + 2, board_height)):
+      if rx != x or ry != y:
+        results.append((rx, ry))
+
+  return list(map(convert_numeric_to_coord, results))
+
+# No queen attacks involed - it's a sum of rook + bishop so can be optimized
+
+def generate_all_facts():
+  facts = {}
+
+  for coord in available_coords:
+    figure_moves = {
+      'bishop_attacks': get_bishop_attacks(coord),
+      'black_pawn_attacks': get_black_pawn_attacks(coord),
+      'knight_attacks': get_knight_attacks(coord),
+      'rook_attacks': get_rook_attacks(coord),
+      'white_pawn_attacks': get_white_pawn_attacks(coord),
+      'king_attacks': get_king_attacks(coord)
+    }
+
+    for name, moves in figure_moves.items():
+      for move in moves:
+        if move in available_coords:
+          fact = place_figure_fact(name, [coord, move])
+
+          if name not in facts:
+            facts[name] = []
+
+          facts[name].append(fact)
+
+  return facts
+
+# Generator execution:    
+
+test = generate_all_facts()['bishop_attacks']
+
+for item in test:
+  print(item, end='\n')
+
+
+  
