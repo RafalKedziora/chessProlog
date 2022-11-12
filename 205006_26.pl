@@ -2094,7 +2094,7 @@ clues(S) :-
   bishop_attacks(piece(bishop, two, black), piece(king, one, white), S),
   rook_attacks(piece(rook, one, black), piece(pawn, three, white), S),
   rook_attacks(piece(rook, one, black), piece(king, one, white), S),
-  edge(piece(bishop, _, black)),
+  edge(piece(bishop, _, black), S),
   white_pawn_attacks(piece(pawn, one, white), piece(rook, one, black), S),
   bishop_attacks(piece(bishop, two, black), piece(bishop, one, white), S),
   black_pawn_attacks(piece(pawn, one, black), piece(pawn, three, white), S),
@@ -2106,6 +2106,6 @@ clues(S) :-
   bishop_attacks(piece(bishop, two, white), piece(bishop, two, black), S), % mirror 1
   white_pawn_attacks(piece(pawn, three, white), piece(pawn, one, black), S),
   king_attacks(piece(king, one, black), piece(rook, one, white), S),
-  king_attacks(piece(king, one, white), piece(bishop, two, black), S)
+  king_attacks(piece(king, one, white), piece(bishop, two, black), S).
 
 
