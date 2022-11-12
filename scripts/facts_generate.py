@@ -21,7 +21,7 @@ def convert_numeric_to_coord(numeric):
 
 def place_figure_fact(fact_name, positions):
   data = map(convert_coord_to_numeric, positions)
-  arr = [['_' for x in range(board_height)] for y in range(board_width)]
+  arr = [['_' for _ in range(board_height)] for _ in range(board_width)]
 
   for idx, coord in enumerate(data):
     arr[board_height - coord[1]][coord[0] - 1] = string.ascii_uppercase[idx]
@@ -121,6 +121,21 @@ def get_edge():
 # No queen attacks involed - it's a sum of rook + bishop so can be optimized
 # Fact generator
 
+def get_attacks(coord):
+  return {
+      'bishop_attacks': get_bishop_attacks(coord),
+      'black_pawn_attacks': get_black_pawn_attacks(coord),
+      'knight_attacks': get_knight_attacks(coord),
+      'rook_attacks': get_rook_attacks(coord),
+      'white_pawn_attacks': get_white_pawn_attacks(coord),
+      'king_attacks': get_king_attacks(coord),
+  }
+
+def is_edge(coord, edge, facts):
+  if(coord in edge):
+    fact = place_figure_fact('edge', [coord])
+    facts['edge'].append(fact)
+
 def generate_all_facts():
   facts = { 
     'f4': [place_figure_fact('f4', ['f4'])],
@@ -128,20 +143,9 @@ def generate_all_facts():
   }
   edge = get_edge()
 
-  for coord in edge:
-    if coord in available_coords:
-      fact = place_figure_fact('edge', [coord])
-      facts['edge'].append(fact)
-
   for coord in available_coords:
-    figure_moves = {
-      'bishop_attacks': get_bishop_attacks(coord),
-      'black_pawn_attacks': get_black_pawn_attacks(coord),
-      'knight_attacks': get_knight_attacks(coord),
-      'rook_attacks': get_rook_attacks(coord),
-      'white_pawn_attacks': get_white_pawn_attacks(coord),
-      'king_attacks': get_king_attacks(coord),
-    }
+    is_edge(coord, edge, facts)
+    figure_moves = get_attacks(coord)
 
     for name, moves in figure_moves.items():
       for move in moves:
@@ -157,7 +161,7 @@ def generate_all_facts():
 
 # Generator execution:    
 
-filename = '205006_26.pl'
+filename = 'test.pl'
 test = generate_all_facts()
 
 with open(filename, 'w') as outfile:
@@ -167,8 +171,3 @@ with open(filename, 'w') as outfile:
       outfile.write('\n')
 
     outfile.write('\n')
-
-  outfile.write('queen_attacks(A, B, S) :- bishop_attacks(A, B, S) ; rook_attacks(A, B, S).')
-
-
-  
