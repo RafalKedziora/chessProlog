@@ -29,7 +29,7 @@ def place_figure_fact(fact_name, positions):
   content = ',\n'.join([', '.join(row) for row in arr])
   variables = ','.join(string.ascii_uppercase[0 : len(positions)])
 
-  return f"{fact_name}({variables}, c({content}))."
+  return f"{fact_name}({variables}, c(\n{content}))."
 
 # position generating
 # following functions work only assuming that nothing stands on the way of figure
@@ -108,10 +108,30 @@ def get_king_attacks(pos):
 
   return list(map(convert_numeric_to_coord, results))
 
+def get_edge():
+  results = []
+
+  for ry in range(1, board_height + 1):
+    for rx in range(1, board_width + 1):
+      if (rx == 1 or rx == board_width) or (ry == 1 or ry == board_height):
+        results.append((rx, ry))
+
+  return list(map(convert_numeric_to_coord, results))
+
 # No queen attacks involed - it's a sum of rook + bishop so can be optimized
+# Fact generator
 
 def generate_all_facts():
-  facts = {}
+  facts = { 
+    'f4': [place_figure_fact('f4', ['f4'])],
+    'edge': [], 
+  }
+  edge = get_edge()
+
+  for coord in edge:
+    if coord in available_coords:
+      fact = place_figure_fact('edge', [coord])
+      facts['edge'].append(fact)
 
   for coord in available_coords:
     figure_moves = {
@@ -120,7 +140,7 @@ def generate_all_facts():
       'knight_attacks': get_knight_attacks(coord),
       'rook_attacks': get_rook_attacks(coord),
       'white_pawn_attacks': get_white_pawn_attacks(coord),
-      'king_attacks': get_king_attacks(coord)
+      'king_attacks': get_king_attacks(coord),
     }
 
     for name, moves in figure_moves.items():
@@ -137,10 +157,18 @@ def generate_all_facts():
 
 # Generator execution:    
 
-test = generate_all_facts()['bishop_attacks']
+filename = '205006_26.pl'
+test = generate_all_facts()
 
-for item in test:
-  print(item, end='\n')
+with open(filename, 'w') as outfile:
+  for key, facts in test.items():
+    for item in facts:
+      outfile.write(item)
+      outfile.write('\n')
+
+    outfile.write('\n')
+
+  outfile.write('queen_attacks(A, B, S) :- bishop_attacks(A, B, S) ; rook_attacks(A, B, S).')
 
 
   
