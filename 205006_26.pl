@@ -2078,6 +2078,7 @@ _, _, _, _, _, _, _, _)).
 
 clues(S) :- 
   f4(piece(king, one, white), S), % Biały król znajduje się na polu F4.
+  edge(piece(bishop, _, black), S), % Czarny goniec znajduje się przy krawędzi szachownicy.
   king_attacks(piece(king, one, white), piece(rook, one, black), S), % Biały król może bić pierwszą wieżę.
   knight_attacks(piece(knight, one, black), piece(pawn, two, white), S), % Pierwszy czarny skoczek może bić drugiego pionka.
   king_attacks(piece(king, one, black), piece(bishop, one, white), S), % Czarny król może bić pierwszego gońca.
@@ -2092,7 +2093,6 @@ clues(S) :-
   bishop_attacks(piece(bishop, two, black), piece(king, one, white), S), % Drugi czarny goniec może bić króla.
   rook_attacks(piece(rook, one, black), piece(pawn, three, white), S), % Pierwsza czarna wieża może bić trzeciego pionka.
   rook_attacks(piece(rook, one, black), piece(king, one, white), S), % Pierwsza czarna wieża może bić króla.
-  edge(piece(bishop, _, black), S), % Czarny goniec znajduje się przy krawędzi szachownicy.
   white_pawn_attacks(piece(pawn, one, white), piece(rook, one, black), S), % Pierwszy biały pionek może bić pierwszą wieżę.
   bishop_attacks(piece(bishop, two, black), piece(bishop, one, white), S), %  Drugi czarny goniec może bić pierwszego gońca.
   black_pawn_attacks(piece(pawn, one, black), piece(pawn, three, white), S), % Pierwszy czarny pionek może bić trzeciego pionka.
