@@ -3,11 +3,24 @@ import string
 board_width = 8
 board_height = 8
 
+# our fields
+# available_coords = [
+#   'B5', 'C3', 'C6', 'D5', 'D6', 'E3', 'E4', 'E5', 'E7', 'F4', 'F5', 'F6', 'G4', 'G5', 'H5'
+# ]
+
+# all fields
 available_coords = [
-  'B5', 'C3', 'C6', 'D5', 'D6', 'E3', 'E4', 'E5', 'E7', 'F4', 'F5', 'F6', 'G4', 'G5', 'H5'
+  'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8',
+  'B1', 'B2', 'B3', 'B4', 'B5', 'B6', 'B7', 'B8',
+  'C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7', 'C8',
+  'D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'D8',
+  'E1', 'E2', 'E3', 'E4', 'E5', 'E6', 'E7', 'E8',
+  'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8',
+  'G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8',
+  'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'H7', 'H8',
 ]
 
-# fact generating
+# Fact generating
 
 def convert_coord_to_numeric(position):
   alphabet = string.ascii_lowercase
@@ -31,8 +44,7 @@ def place_figure_fact(fact_name, positions):
 
   return f"{fact_name}({variables}, c(\n{content}))."
 
-# position generating
-# following functions work only assuming that nothing stands on the way of figure
+# Position generating
 
 def get_black_pawn_attacks(pos):
   x, y = convert_coord_to_numeric(pos)
@@ -118,7 +130,7 @@ def get_edge():
 
   return list(map(convert_numeric_to_coord, results))
 
-# No queen attacks involed - it's a sum of rook + bishop so can be optimized
+# No queen attacks predicate - it's a sum of rook + bishop so can be optimized
 # Fact generator
 
 def get_attacks(coord):
@@ -161,7 +173,7 @@ def generate_all_facts():
 
 # Generator execution:    
 
-filename = '205006_26.pl'
+filename = '205006_26_all.pl'
 test = generate_all_facts()
 
 with open(filename, 'w') as outfile:
