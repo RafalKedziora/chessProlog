@@ -2106,4 +2106,5 @@ clues(S) :-
   king_attacks(piece(king, one, black), piece(rook, one, white), S), %  Czarny król może bić pierwszą wieżę.
   king_attacks(piece(king, one, white), piece(bishop, two, black), S). % Biały król może bić drugiego gońca.
 
-
+% Takie ulozenie figur jest zgodne z zasadami gry w szachy.
+% Gracz posiadajacy czarne pionki szachuje, w zwiazku z tym ruch wykonuje gracz z bialymi pionkami.
