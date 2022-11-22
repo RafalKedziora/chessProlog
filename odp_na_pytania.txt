@@ -1,5 +1,0 @@
-1. Czy takie ułożenie figur na szachownicy jest możliwe zgodnie z zasadami?
-Względem zasad gry w szachy jedyne zastrzeżenia budzi obecność obu białych gońców na czarnych polach. Jednak jest to możliwe, o ile goniec z pola B6, był promowanym pionem z pola D8, który potem przeszedł na B6. Pomimo tego, że jest to możliwe, to prawdopodobieństwo jest podobne jak dla wystąpienia gambitu sandomierskiego (bliskie zeru).
-
-2. Który kolor jako następny wykonuje ruch?
-Żaden z graczy nie wykona już ruchu, gdyż biały król jest matowany przez czarnego skoczka, gońca oraz wieżę.
