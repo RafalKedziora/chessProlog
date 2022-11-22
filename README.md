@@ -20,6 +20,8 @@ Krótkie wyjaśnienie funkcjonalności pod ścieżkami:
   -  `facts_full.pl` - plik z zestawem faktów, zawiera wszystkie możliwe bicia figur na szachownicy
   -  `facts_limited.pl` - plik z zestawem faktów, zawiera tylko niezbędne bicia figur na szachownicy
 
+Plik `205006_26.png` zawiera ułożenie figur z rozwiązania na szachownicy.
+
 ## Odpowiedzi na pytania odnośnie planszy
 1. Czy takie ułożenie figur na szachownicy jest możliwe zgodnie z zasadami?
 
