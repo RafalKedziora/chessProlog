@@ -20859,7 +20859,7 @@ A, _, A, _, _, _, _, _,
 A, A, A, A, _, _, _, A,
 A, A, _, A, _, A, A, A,
 A, A, A, A, A, A, A, A,
-A, A, A, A, A, A, A, A)).
+A, A, A, A, A, A, A, A)) :- A = piece(blank, blank, blank)
 f4(A, c(
 _, _, _, _, _, _, _, _,
 _, _, _, _, _, _, _, _,
