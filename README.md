@@ -7,7 +7,7 @@ Niniejsze repozytorium zawiera rozwiązanie zadania "Szachy" na przedmiot Sztucz
 
 ## Pliki projektu
 
-**Główne rozwiązanie projektu znajduje się pod ścieżką** `./prolog/205006_26_full_one_file.pl`.
+**Główne rozwiązanie projektu znajduje się pod ścieżką** `./prolog/205006_26.pl`.
 
 Krótkie wyjaśnienie funkcjonalności pod ścieżkami:
 - `labs` - zadania z laboratoriów
@@ -16,7 +16,7 @@ Krótkie wyjaśnienie funkcjonalności pod ścieżkami:
 - `prolog` - folder z plikami wygenerowanymi przez generator
   - `205006_26_full_one_file.pl` - **główny plik z rozwiązaniem** - sklejka wygenerowanych faktów z predykatem `clues(S)`; zawiera wszystkie możliwe bicia dla figur z zestawu
   - `205006_26_limited_one_file.pl` - dodatkowy plik z rozwiązaniem - sklejka wygenerowanych faktów z predykatem `clues(S)`; zawiera wyłącznie bicia potrzebne do uzyskania wyniku dla Zestawu 26
-  - `205006_26.pl` - plik z rozwiązaniem używający plików `facts_full.pl` i `facts_limited.pl` jako źródła faktów
+  - `205006_26_with_imports.pl` - plik z rozwiązaniem używający plików `facts_full.pl` i `facts_limited.pl` jako źródła faktów
   -  `facts_full.pl` - plik z zestawem faktów, zawiera wszystkie możliwe bicia figur na szachownicy
   -  `facts_limited.pl` - plik z zestawem faktów, zawiera tylko niezbędne bicia figur na szachownicy
 
