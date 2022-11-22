@@ -22,6 +22,9 @@ Krótkie wyjaśnienie funkcjonalności pod ścieżkami:
 
 Plik `205006_26.png` zawiera ułożenie figur z rozwiązania na szachownicy.
 
+## Ułożenie pionów na szachownicy
+![Szachownica](205006_26.png)
+
 ## Odpowiedzi na pytania odnośnie planszy
 1. Czy takie ułożenie figur na szachownicy jest możliwe zgodnie z zasadami?
 
