@@ -43,7 +43,7 @@ class AttackGenerator:
     result = []
 
     for px, py in potential:
-      if (px > 0 and px < BOARD_WIDTH) and (py > 0 and py < BOARD_HEIGHT):
+      if (px > 0 and px < BOARD_WIDTH + 1) and (py > 0 and py < BOARD_HEIGHT + 1):
         result.append((px, py))
 
     return list(map(self.generator.convert_to_coord, result))
@@ -74,8 +74,8 @@ class AttackGenerator:
     x, y = self.generator.convert_to_numeric(pos)
     results = []
 
-    for ry in range(max(y - 1, 1), min(y + 2, BOARD_HEIGHT)):
-      for rx in range(max(x - 1, 1), min(x + 2, BOARD_HEIGHT)):
+    for ry in range(max(y - 1, 1), min(y + 2, BOARD_HEIGHT + 1)):
+      for rx in range(max(x - 1, 1), min(x + 2, BOARD_HEIGHT + 1)):
         if rx != x or ry != y:
           results.append((rx, ry))
 

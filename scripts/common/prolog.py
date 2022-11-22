@@ -28,4 +28,4 @@ class PrologParser:
 
     content = ',\n'.join([', '.join(row) for row in arr])
 
-    return f"valid(A, c(\n{content})) :- A = piece(blank, blank, blank)"
+    return f"valid(A, c(\n{content})) :- A = piece(blank, blank, blank)."
