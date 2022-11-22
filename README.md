@@ -1,5 +1,5 @@
 # Rozwiązanie zadania "Szachy", zestaw 26
-Niniejsze repozytorium zawiera rozwiązanie zadania "Szachy" na przedmiot Sztuczna Integligencja prowadzony na Wydziale Zastosowań Informatyki i Matematyki SGGW.
+Niniejsze repozytorium zawiera rozwiązanie zadania "Szachy" na przedmiot Sztuczna Inteligencja prowadzony na Wydziale Zastosowań Informatyki i Matematyki SGGW.
 
 ## Autorzy
 - **Rafał Kędziora** (nr alb. 205006)
