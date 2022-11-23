@@ -17,13 +17,13 @@ odd(s(X)) :- even(X).
 times(zero, X, zero) :- isnumber(X).
 times(s(X), Y, Z) :- times(X, Y, Q), add(Y, Q, Z).
 
-quotient(X, zero, Q) :- false.
+quotient(_, zero, _) :- false.
 quotient(X, Y, Q) :- times(Y, Q, X).
 
-remainder(zero, X, zero).
-remainder(X, zero, R) :- false.
-remainder(s(X), s(Y), R) :- remainder(X, s(Y), A), isequal(A, Y).
-remainder(s(X), Y, R) :- remainder(X, Y, A), add(A, s(zero), R).
+remainder(X, Y, R) :- lessthanequal(X,Y), R = X.
+remainder(zero, _, zero).
+remainder(_, zero, _) :- false.
+remainder(X, Y, R) :- add(Y, Q, X), remainder(Q, Y, R).
 
 fact(zero, s(zero)).
 fact(s(N), X) :- fact(N, A), times(A, s(N), X).
@@ -31,4 +31,12 @@ fact(s(N), X) :- fact(N, A), times(A, s(N), X).
 fibonacci(zero, zero).
 fibonacci(s(zero), s(zero)).
 fibonacci(s(s(zero)), s(zero)).
-fibonacci(s(s(N)), X) :- fibonacci(s(s(N)), A), fibonacci(s(s(N)), B), add(A, B, N).
+fibonacci(s(s(N)), X) :- fibonacci(s(N), A), fibonacci(N, B), add(A, B, X).
+
+% do testowania
+
+shownum(zero,0).
+shownum(s(X),Y) :- shownum(X,Q), Y is Q + 1.
+
+putnum(zero,0).
+putnum(s(X),Y) :- Q is Y - 1, putnum(X,Q).
