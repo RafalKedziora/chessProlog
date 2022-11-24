@@ -21942,7 +21942,7 @@ bishop_attacks(A,B, c(
   _, _, _, _, _, _, _, _)).
   
 clues(S) :- 
-  valid(A, S),
+  valid(_, S),
   f4(piece(king, one, white), S), % Biały król znajduje się na polu F4.
   edge(piece(bishop, _, black), S), % Czarny goniec znajduje się przy krawędzi szachownicy.
   king_attacks(piece(king, one, white), piece(rook, one, black), S), % Biały król może bić pierwszą wieżę.

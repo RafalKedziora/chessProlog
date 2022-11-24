@@ -2,7 +2,7 @@
 % :- [facts_limited]. -- odkomentować tę linię i zakomentować powyższą dla ograniczonego zakresu predykatów
 
 clues(S) :- 
-  valid(X, S), % zakomentować dla ograniczonego zakresu predykatów
+  valid(_, S), % zakomentować dla ograniczonego zakresu predykatów
   f4(piece(king, one, white), S), % Biały król znajduje się na polu F4.
   edge(piece(bishop, _, black), S), % Czarny goniec znajduje się przy krawędzi szachownicy.
   king_attacks(piece(king, one, white), piece(rook, one, black), S), % Biały król może bić pierwszą wieżę.
