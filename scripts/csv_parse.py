@@ -35,15 +35,30 @@ def string_builder(data):
                 comma_num = 0
     return formatted_data
             
-        
+def remove_blank(data):
+    temp = data.split(',')
+    result = ""
+    i = 0
+    for part in temp:
+        if("blank" in part):
+            result += ","
+        else:
+            result += f"{part},"
+        i += 1
+        if(i == 8):
+            result += "\n"
+            i = 0
+    return result
 
 def main():
     csv_type_data = string_builder(sys.argv[1])
     
-    with open("results.csv", "w") as fileWriter:
-        fileWriter.write(csv_type_data)
+    csv_formatted = remove_blank(csv_type_data)
 
-    read = pd.read_csv('results.csv')
-    read.to_excel('results.xlsx', header=False, index=False)
+    with open("results.csv", "w") as fileWriter:
+        fileWriter.write(csv_formatted)
+
+    read = pd.read_csv('results.csv', header=None)
+    read.to_excel('results.xlsx', index=False, header=False)
     os.remove('results.csv')
 main()
